@@ -94,10 +94,71 @@ INT n/        :: Level in hierarchy
 ]]
 }</code></pre>
 
-    <h3>Conclusion</h3>
+    <h2>Module II: Beyond Uncomputability</h2>
+
+    <h3>Introduction</h3>
     <p>
-        Semiblocks (Module I) provides a formal framework for representing complex computational hierarchies, recursive structures, and symbolic algorithms. 
-        Its combination of symbolic syntax, block-based structuring, and optional C++ embedding allows exploration of theoretical computation, fast-growing processes, and hierarchical modeling in an academic context.
+        Module II explores the boundaries of computability within formal pseudocode, using higher-order ordinal functions and black-box oracles. 
+        The goal is to define operations and hierarchies that extend beyond conventional algorithmic reach, addressing ordinals that cannot be effectively computed by machines with finite instruction sets or access to standard recursive operations.
     </p>
+
+    <h3>Pseudocode Description</h3>
+    <pre><code>:: Function alpha computes fundamental sequences of ordinals
+function alpha(n: Nat, m: OrdNotation) -> OrdNotation:
+    if n == 0 and m == 0:
+        return 0
+    else:
+        return fund_seq(m, n)    // m[n]
+
+:: Collapse function for ordinal sequences
+function collapse(k: OrdNotation, n: Nat) -> OrdNotation:
+    return fund_seq(k, n)       // total operation as described above
+
+:: Beta function combines collapse with fast-growing hierarchy evaluation
+function beta(n: Nat, k: OrdNotation) -> Nat:
+    if n == 0 and k == 0:
+        return 0
+    else:
+        i := collapse(k, n)    // i = k[n]
+        return f_i(n)          // evaluate FGH at index i
+
+:: Tau defines the least ordinal uncomputable by n-th order black-box oracle machines
+function tau(n: Nat) -> OrdNotation:
+    return sup( Ord_beta^(n) )   // least ordinal not computable by such machines
+
+:: Gamma defines the least ordinal uncomputable by n-th order axiom oracle machines
+function gamma(n: Nat) -> OrdNotation:
+    return sup( Ord_tau^(n) )    // least ordinal not computable by such machines</code></pre>
+
+    <h3>Discussion</h3>
+    <p>
+        The functions <code>alpha</code>, <code>collapse</code>, and <code>beta</code> provide a framework for systematically traversing and evaluating ordinals using fundamental sequences and hierarchical computation. 
+        The <code>tau</code> and <code>gamma</code> functions formalize the notion of ordinals that exceed the computational power of n-th order oracle machines, thus exploring a formal notion of “beyond computability.”
+    </p>
+    <p>
+        By combining fundamental sequences, collapsing operations, and hierarchical evaluation, this module situates itself at the interface of ordinal analysis, theoretical computer science, and the philosophy of uncomputability.
+    </p>
+
+    <h2>Comments</h2>
+<p>To leave a comment, simply log in with your GitHub account below. Your comment will be posted via GitHub Issues.</p>
+
+<!-- Giscus Comments Embed -->
+<script src="https://giscus.app/client.js"
+        data-repo="YOUR_GITHUB_USERNAME/YOUR_REPO_NAME"
+        data-repo-id="YOUR_REPO_ID"
+        data-category="Comments"
+        data-category-id="YOUR_CATEGORY_ID"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+<noscript>
+    Comments require JavaScript. Please enable JavaScript to view or post comments.
+</noscript>
 </body>
 </html>
