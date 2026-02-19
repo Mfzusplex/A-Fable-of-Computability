@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Fable of Computability</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #f9f9f9;
+            color: #1a1a1a;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        pre {
+            background-color: #eaeaea;
+            padding: 1em;
+            border-left: 5px solid #333;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+        }
+        .notation {
+            margin-left: 2em;
+        }
+        .module {
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>A Fable of Computability</h1>
+    <p>Author: <strong>Lucian Wilber</strong></p>
+
+    <h2>Module I: Semiblocks</h2>
+
+    <h3>Introduction</h3>
+    <p>
+        Semiblocks is a non-executable pseudocode language that extends the traditional binary code framework and allows the embedding of C++ code within its functions. 
+        It is intended for theoretical modeling, black-box analysis, hierarchical process representation, and formal exploration of computation.
+    </p>
+    <p>
+        The language is processed sequentially from left to right. Functions defined outside of blocks have greater privilege in terms of scope, whereas blocks provide localized structure for computations.
+    </p>
+
+    <h3>Core Notation</h3>
+    <div class="notation">
+        <p><strong>Atoms of the code:</strong> A = 1, B = 0</p>
+        <p><strong>Syntactic atoms:</strong> / = SPACE, # = TAB, ## = ENTER</p>
+        <p><strong>Commentary:</strong> :: serves as a prefix for comments (e.g., <code>:: HELLO WORLD</code>)</p>
+        <p><strong>Functions and blocks:</strong> { = FUNC START (suffix of function name), } = FUNC END, [[ = BLOCK START (suffix of block name), ]] = BLOCK END</p>
+        <p><strong>Conditions:</strong> CS/# = CONDITION START, #/CE = CONDITION END. Logic gates are admitted within conditions.</p>
+        <p><strong>Extra instructions:</strong> DOWN() decrement value, UP() increment value, RET = Return value, INT = Define integer.</p>
+        <p><strong>Embedded C++ code</strong> is permitted within functions for computation and modeling purposes.</p>
+    </div>
+
+    <h3>Example: Fast-Growing Hierarchy Extended to Uncountable Ordinals</h3>
+    <pre><code>:: Fast-Growing Hierarchy Extended to Uncountable Ordinals
+{FGH##
+
+INT alpha/    :: Current ordinal index
+INT n/        :: Level in hierarchy
+
+[[base_case##
+    CS/# alpha==0/
+        RET 1/
+    #/CE
+]]
+
+[[successor_case##
+    CS/# alpha>0 AND is_successor(alpha)/
+        :: Use previous level
+        RET FGH(alpha-1, n+1)/
+    #/CE
+]]
+
+[[limit_case##
+    CS/# is_limit(alpha)/
+        :: Embed fundamental sequence: alpha[n]
+        RET FGH(fund_seq(alpha, n), n)/
+    #/CE
+]]
+
+[[uncountable_extension##
+    CS/# is_uncountable(alpha)/
+        :: Symbolic extension using ℵ₁, ℵ₂, ...
+        :: We cannot compute exact value, but we can define notation
+        RET FGH(symbolic(alpha), n)/
+    #/CE
+]]
+}</code></pre>
+
+    <h3>Conclusion</h3>
+    <p>
+        Semiblocks (Module I) provides a formal framework for representing complex computational hierarchies, recursive structures, and symbolic algorithms. 
+        Its combination of symbolic syntax, block-based structuring, and optional C++ embedding allows exploration of theoretical computation, fast-growing processes, and hierarchical modeling in an academic context.
+    </p>
+</body>
+</html>
